@@ -12,12 +12,20 @@ import com.metacube.get.layarch.model.User;
 public class JdbcUserDao extends GenericJdbcDao<User, Integer> implements UserDao
 {
 
-	@Override protected String getTableName()
+	private String tableName;
+
+	public void setTableName(final String tableName)
 	{
-		return "User";
+		this.tableName = tableName;
 	}
 
-	@Override protected User extractResultSetRow(final ResultSet resultSet)
+	@Override public String getTableName()
+	{
+		return tableName;
+	}
+
+	@Override
+	protected User extractResultSetRow(final ResultSet resultSet)
 	{
 		User user = new User();
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.metacube.get.layarch.dto.UserDto;
 import com.metacube.get.layarch.model.User;
+import com.metacube.get.layarch.service.DefaultUserService;
 import com.metacube.get.layarch.service.UserService;
 
 /**
@@ -13,6 +14,20 @@ import com.metacube.get.layarch.service.UserService;
 public class DefaultUserFacade implements UserFacade
 {
 	UserService userService;
+
+	public DefaultUserFacade() {
+
+	}
+
+	public void setUserService(final UserService userService)
+	{
+		this.userService = userService;
+	}
+
+	public UserService getUserService()
+	{
+		return userService;
+	}
 
 	public DefaultUserFacade(UserService userService) {
 		this.userService = userService;
