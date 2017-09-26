@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="userDao" class="com.metacube.get.layarch.dao.user.JdbcUserDao" >
-        <property name="tableName" value="User" />
-    </bean>
+    <context:component-scan base-package="com.metacube.get.layarch" />
 
-    <bean id="userService" class="com.metacube.get.layarch.service.DefaultUserService">
-        <constructor-arg name="userDao" ref="userDao"/>
-    </bean>
-
-    <bean id="userFacade" class="com.metacube.get.layarch.facade.DefaultUserFacade" autowire="byName">
-    </bean>
 </beans>

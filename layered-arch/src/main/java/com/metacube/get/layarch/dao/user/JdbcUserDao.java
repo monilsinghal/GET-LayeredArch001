@@ -3,16 +3,20 @@ package com.metacube.get.layarch.dao.user;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import com.metacube.get.layarch.dao.GenericJdbcDao;
 import com.metacube.get.layarch.model.User;
 
 /**
  * Created by Monil on 25-Sep-17.
  */
+@Component("userDao")
 public class JdbcUserDao extends GenericJdbcDao<User, Integer> implements UserDao
 {
-
-	private String tableName;
+	private String tableName = "User";
 
 	public void setTableName(final String tableName)
 	{

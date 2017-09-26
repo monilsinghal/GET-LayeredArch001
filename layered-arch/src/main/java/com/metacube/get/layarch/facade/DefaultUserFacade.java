@@ -3,6 +3,9 @@ package com.metacube.get.layarch.facade;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.metacube.get.layarch.dto.UserDto;
 import com.metacube.get.layarch.model.User;
 import com.metacube.get.layarch.service.DefaultUserService;
@@ -11,8 +14,10 @@ import com.metacube.get.layarch.service.UserService;
 /**
  * Created by Monil on 25-Sep-17.
  */
+@Component("userFacade")
 public class DefaultUserFacade implements UserFacade
 {
+	@Autowired
 	UserService userService;
 
 	public DefaultUserFacade() {
