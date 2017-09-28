@@ -11,12 +11,10 @@ import com.metacube.get.layarch.model.User;
 /**
  * Created by Monil on 25-Sep-17.
  */
-@Component("userService")
 public class DefaultUserService implements UserService
 {
 	UserDao userDao;
 
-	@Autowired
 	public DefaultUserService(UserDao userDao) {
 		this.userDao = userDao;
 	}
