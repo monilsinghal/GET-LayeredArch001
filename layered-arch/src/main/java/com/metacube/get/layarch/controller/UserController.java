@@ -1,46 +1,25 @@
 package com.metacube.get.layarch.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.metacube.get.layarch.dao.user.JdbcUserDao;
-import com.metacube.get.layarch.facade.DefaultUserFacade;
+import com.metacube.get.layarch.dto.UserDto;
 import com.metacube.get.layarch.facade.UserFacade;
-import com.metacube.get.layarch.model.User;
-import com.metacube.get.layarch.service.DefaultUserService;
-import com.metacube.get.layarch.spring.Factory;
 
 /**
  * Created by Monil on 25-Sep-17.
  */
-@Path("/user")
+@Controller
+@RequestMapping("/service/user")
 public class UserController
 {
+	@Autowired
 	UserFacade userFacade;
 
-	public UserController() {
-
-//		ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
-		userFacade = Factory.getApplicationContext().getBean("userFacade", UserFacade.class);
-
-		//userFacade = new DefaultUserFacade(new DefaultUserService(new JdbcUserDao()));
-	}
-
-	@GET
-	@Path("/list")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response getUsers() {
-
-		return Response.status(Response.Status.OK).entity(userFacade.getAllUsers()).build();
-
+	@RequestMapping(value = "/list", produces = "application/json")
+	public @ResponseBody Iterable<UserDto> getUsers() {
+		return userFacade.getAllUsers();
 	}
 }
