@@ -13,7 +13,7 @@ import com.metacube.get.layarch.model.User;
 /**
  * Created by Monil on 25-Sep-17.
  */
-@Component("userDao")
+@Component("jdbcUserDao")
 public class JdbcUserDao extends GenericJdbcDao<User, Integer> implements UserDao
 {
 	private String tableName = "User";
