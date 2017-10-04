@@ -1,5 +1,7 @@
 package com.metacube.get.layarch.dto;
 
+import com.metacube.get.layarch.model.UserRole;
+
 /**
  * Created by Monil on 25-Sep-17.
  */
@@ -10,6 +12,17 @@ public class UserDto
 	private String lastname;
 	private boolean active;
 	private String type;
+	private UserRoleDto role;
+
+	public UserRoleDto getRole()
+	{
+		return role;
+	}
+
+	public void setRole(final UserRoleDto role)
+	{
+		this.role = role;
+	}
 
 	public int getId()
 	{

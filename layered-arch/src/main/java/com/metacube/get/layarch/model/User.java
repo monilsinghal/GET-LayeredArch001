@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -30,6 +32,20 @@ public class User
 
 	@Column(name = "type")
 	private String type;
+
+	@ManyToOne
+	@JoinColumn(name = "role_id")
+	private UserRole userRole;
+
+	public UserRole getUserRole()
+	{
+		return userRole;
+	}
+
+	public void setUserRole(final UserRole userRole)
+	{
+		this.userRole = userRole;
+	}
 
 	public int getId()
 	{

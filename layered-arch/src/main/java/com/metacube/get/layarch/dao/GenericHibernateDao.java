@@ -53,7 +53,10 @@ public abstract class GenericHibernateDao<T, ID extends Serializable> implements
 
 	@Override public <S extends T> S save(final S entity)
 	{
-		return null;
+		Session session = this.sessionFactory.getCurrentSession();
+		session.save(entity);
+		return entity;
+
 	}
 
 	@Override public boolean exists(final ID primaryKey)
